@@ -14,8 +14,8 @@ server.get('/', (req, res) => {
 server.get('/weather/:lon/:lat/:searchQuery', (request, response) => {
       const foundData = jSonWeatherDS.find(
             (cityData) =>
-                  +cityData.lon === +request.params.lon &&
-                  +cityData.lat === +request.params.lat &&
+            ~~+cityData.lon === ~~+request.params.lon &&
+            ~~+cityData.lat === ~~+request.params.lat &&
                   cityData.city_name === request.params.searchQuery
       );
       if (foundData) {
@@ -23,20 +23,20 @@ server.get('/weather/:lon/:lat/:searchQuery', (request, response) => {
                   foundData.data
                         .map(daily =>
                               (new Forecast(daily))))
+                              console.log(`>>>>>>>> Sent ${Date.now()}`)
       }
       else { response.status(500).send('No results found!!!'); }
 });
 
 
 class Forecast {
-      constructor(city) {
-            this.date = city.valid_date,
-                  this.description = city.weather.description
-
+      constructor(day) {
+            this.ForcastDate = day.valid_date,
+                  this.description = day.weather.description
       }
 }
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
-      console.log(`################################ ~ Running on port ${PORT} ~ ################################`);
+      console.log(`#################### ~ Running on port ${PORT} ~ ####################`);
 });
