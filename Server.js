@@ -45,7 +45,25 @@ axios
       })
       .catch((error) => { response.status(500).send(error) })
 });
+server.get('/movies/:query', (request, response) => {
+      const url = `${configs.movies_API_URL}?api_key=${configs.movies_API_key}&region=${request.params.query}`;
+      const moviesData = []
+      axios
+      .get(url)
+      .then((apiResponse) => {
+            apiResponse.data.results.map((movie) => {
+                  if (movie.poster_path) {
+                    if (movie.release_date !== 'Invalid Date') {
+                        moviesData.push(new Movies(movie)) 
+                    }
+                  }
+                });
 
+            response.send(moviesData)
+            console.log(`>>>>>>>> Sent ${Date.now()}`)
+      })
+      .catch((error) => { response.status(500).send(error) })
+});
 
 class Forecast {
       constructor(day) {
@@ -53,7 +71,17 @@ class Forecast {
             this.description = day.weather.description
       }
 }
-
+class Movies {
+      constructor(movie) {
+            this.released_on = movie.release_date,
+            this.title = movie.title,
+            this.overview = movie.overview,
+            this.average_votes = movie.vote_average,
+            this.total_votes = movie.vote_count,
+            this.image_url = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+            this.popularity = movie.popularity;
+      }
+    }
 
 server.listen(configs.port, () => console.log(`#################### ~ Running on port ${configs.port} ~ ####################`));
       
