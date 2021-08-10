@@ -20,6 +20,12 @@ GoTo cityexplorer app : https://cityexplorer-d28.netlify.app/
 - response found data using REST API.
 - wheather forcast class also added to send the data in a proper way.
 
+### 11/08/2021
+
+- query LocationIQ for weather information
+- query theMoviesDB for movies information
+  
+
 # Time Estimation
 
 Name of feature: 2. Weather (placeholder)
@@ -42,6 +48,26 @@ Start time: 09/08/2021 04:45 pm
 Finish time: 09/08/2021 05:00 pm
 
 Actual time needed to complete: 15 minutes
+
+
+Name of feature:  Weather (live)
+Estimate of time needed to complete: 1 Hour
+
+Start time: 11/10/2021 05:00 pm
+
+Finish time: 11/10/2021 05:30 pm
+
+Actual time needed to complete: 30 minutes
+
+
+Name of feature:   Movies 
+Estimate of time needed to complete: 1 Hour
+
+Start time: 11/10/2021 06:00 pm
+
+Finish time: 11/10/2021 07:30 pm
+
+Actual time needed to complete: 90 minutes
 
 
 ## Credit and Collaborations
