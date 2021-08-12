@@ -26,9 +26,15 @@ GoTo cityexplorer app : https://cityexplorer-d28.netlify.app/
 - query theMoviesDB for movies information
   
 ### 11/08/2021
-- some data modeling and kind of code refactoring  ;-) 
-
+- some data modeling and kind of code refactoring  
   
+### 12/08/2021
+- added an `Theagent` , its for nothing but practice back-end operations, 
+  though am seeing less time in the response
+- started building the axios request url and parameters separately .
+- added Caching for api query results.
+- added theShotGUN for api query results.
+
 # Time Estimation
 
 Name of feature: 2. Weather (placeholder)

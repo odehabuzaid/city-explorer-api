@@ -1,23 +1,25 @@
-'use strict'
-const axios = require('axios');
-const { WeatherForcast } = require('../data/data');
-
-const configs = {
-      weather_API_key: process.env.WEATHER_API_KEY,
-      weather_API_URL: 'http://api.weatherbit.io/v2.0/forecast/daily/',
-}
+'use strict';
+const { theShotGUN } = require('../agent/theShotGUN');
+const { WeatherForcast } = require('../Data/Structure');
 
 const getWeatherController = (request, response) => {
-      const url =
-            `${configs.weather_API_URL}?key=${configs.weather_API_key}&lang=en&lat=${request.params.lat}&lon=${request.params.lon}`;
-      axios
-            .get(url)
-            .then((apiResponse) => {
-                  const weatherForcastData = apiResponse.data.data.map((day) => (new WeatherForcast(day)))
-                  response.send(weatherForcastData.splice(0, 6))
-                  console.log(`>>>>>>>> Sent ${Date.now()}`)
+      let requestQuery = {
+            apiURL: 'http://api.weatherbit.io/v2.0/forecast/daily/',
+            params: {
+                  key: process.env.WEATHER_API_KEY,
+                  lon: request.params.lon,
+                  lat: request.params.lat,
+            },
+      };
+      theShotGUN(requestQuery,'Weather')
+            .then((agentResponse) => {
+                  let obj = {
+                        timestamp: agentResponse.timestamp,
+                        data:  agentResponse.data.data.map((day) => new WeatherForcast(day)).splice(0, 6) }
+                  response.send(obj );
             })
-            .catch((error) => { response.status(500).send(error) })
-}
-
+            .catch((error) => {
+                  response.status(500).send(error);
+            });
+};
 module.exports = { getWeatherController };

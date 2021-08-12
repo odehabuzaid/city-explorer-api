@@ -6,6 +6,7 @@ function Movies(movie) {
             this.total_votes = movie.vote_count,
             this.image_url = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
             this.popularity = movie.popularity;
+            // this.timeStamp = timeStamp;
 }
 
 function WeatherForcast(city) {
@@ -14,6 +15,7 @@ function WeatherForcast(city) {
             this.maxTemp = city.max_temp,
             this.lowTemp = city.low_temp,
             this.temperature = city.temp;
+            // this.timeStamp = timeStamp;
 }
 
 module.exports = { WeatherForcast, Movies }
