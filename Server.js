@@ -5,8 +5,8 @@ const CORS = require('cors');
 require('dotenv').config();
 server.use(CORS());
 
-const {getWeatherController} = require('./Controllers/Weather.js')
-const {getMoviesController} = require('./Controllers/Movies.js')
+const {getWeatherController} = require('./Controllers/weather.js')
+const {getMoviesController} = require('./Controllers/movies.js')
 
 
 //routers
