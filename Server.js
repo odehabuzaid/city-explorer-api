@@ -15,5 +15,5 @@ server.get('/weather/:lon/:lat',getWeatherController)
 server.get('/movies/:query', getMoviesController) 
 
 
-const port = process.env.PORT
+const port = process.env.PORT || 3001
 server.listen(port, () => console.log(`#################### ~ ${port} ~ ####################`));

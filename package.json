@@ -2,7 +2,7 @@
   "name": "city-explorer-api",
   "version": "1.0.0",
   "description": "city explorer back end server",
-  "main": "server.js",
+  "main": "Server.js",
   "scripts": {
     "start": "node Server.js",
     "nodemon": "nodemon Server.js"
