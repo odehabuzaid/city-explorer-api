@@ -5,8 +5,8 @@ const CORS = require('cors');
 require('dotenv').config();
 server.use(CORS());
 
-const {getWeatherController} = require('./controllers/weather.js')
-const {getMoviesController} = require('./controllers/movies.js')
+const {getWeatherController} = require('./Controllers/Weather.js')
+const {getMoviesController} = require('./Controllers/Movies.js')
 
 
 //routers
@@ -16,4 +16,4 @@ server.get('/movies/:query', getMoviesController)
 
 
 const port = process.env.PORT
-server.listen(port, () => console.log(`#################### ~ Running on port ${port} ~ ####################`));
+server.listen(port, () => console.log(`#################### ~ ${port} ~ ####################`));
