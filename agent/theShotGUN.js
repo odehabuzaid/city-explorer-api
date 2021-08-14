@@ -3,7 +3,10 @@ const axios = require('axios');
 let cache = require('../Data/Cache');
 
 function theShotGUN(requestQuery,senderKey) {
-    let key = `${senderKey}Cache- ${requestQuery.params}`;
+    let key;
+    (senderKey==='Weather')
+        ? key =`${senderKey}Cache- ${requestQuery.params.lat}`
+        : key =`${senderKey}Cache- ${requestQuery.params.region}`
     if (cache[key] && Date.now() - cache[key].timestamp < 720000) {
         return  Promise.resolve(cache[key])
     } else {
